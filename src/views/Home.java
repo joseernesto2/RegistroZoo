@@ -18,10 +18,10 @@ import javax.swing.JOptionPane;
 public class Home extends javax.swing.JFrame {
 
     Zoo zoo = new Zoo();
-    public ArrayList<Animal> listadoAnimales = new ArrayList<>();
+   // public ArrayList<Animal> listadoAnimales = new ArrayList<>();
     public Home() {
         initComponents();
-        zoo.obtenerListadoAnimales(listadoAnimales, tablaAnimales);
+        zoo.obtenerListadoAnimales( tablaAnimales);
     }
 
     /**
@@ -340,9 +340,9 @@ public class Home extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         
         if(tablaAnimales.getSelectedRow()>=0){
-            Form formulario = new Form();
+            Form formulario = new Form(zoo);
             formulario.setVisible(true);
-            formulario.listado = listadoAnimales;
+            // formulario.listado = listadoAnimales;
 
 
             //tomar datos de tabla
@@ -367,19 +367,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        boolean res = zoo.eliminarAnimal(listadoAnimales, tablaAnimales);
+        boolean res = zoo.eliminarAnimal( tablaAnimales);
         if (res) {
             JOptionPane.showMessageDialog(null, "Animal eliminado correctamente");
         } else {
             JOptionPane.showMessageDialog(null, "Error al eliminar al animal");
         }
-        zoo.obtenerListadoAnimales(listadoAnimales, tablaAnimales);
+        zoo.obtenerListadoAnimales( tablaAnimales);
         
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        Form formulario = new Form();
-        formulario.listado = listadoAnimales;
+        Form formulario = new Form(zoo);
+        //formulario.listado = listadoAnimales;
         formulario.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -392,22 +392,23 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_listaEspeciesActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        zoo.obtenerListadoAnimales(listadoAnimales, tablaAnimales);
-        zoo.obtenerListaEspecies(listaEspecies, listadoAnimales);
+        System.out.println("cantidad de animales " + zoo.getListado().size());
+        zoo.obtenerListadoAnimales(tablaAnimales);
+        zoo.obtenerListaEspecies(listaEspecies);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnListarEspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarEspecieActionPerformed
-        zoo.listarPorEspecie(listadoAnimales, tablaAnimales, listaEspecies.getSelectedItem().toString());
+        zoo.listarPorEspecie(tablaAnimales, listaEspecies.getSelectedItem().toString());
     }//GEN-LAST:event_btnListarEspecieActionPerformed
 
     private void addAnimalBarraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAnimalBarraActionPerformed
-        Form formulario = new Form();
-        formulario.listado = listadoAnimales;
+        Form formulario = new Form(zoo);
+        //formulario.listado = listadoAnimales;
         formulario.setVisible(true);
     }//GEN-LAST:event_addAnimalBarraActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        zoo.listarPorEspecie(listadoAnimales, tablaAnimales, listaEspecies.getSelectedItem().toString());
+        zoo.listarPorEspecie(tablaAnimales, listaEspecies.getSelectedItem().toString());
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -415,8 +416,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        zoo.obtenerListadoAnimales(listadoAnimales, tablaAnimales);
-        zoo.obtenerListaEspecies(listaEspecies, listadoAnimales);
+        zoo.obtenerListadoAnimales( tablaAnimales);
+        zoo.obtenerListaEspecies(listaEspecies);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

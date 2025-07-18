@@ -27,29 +27,31 @@ public class Zoo {
     
     private ArrayList<Animal> listado = new ArrayList<>();
     
+    
+    
     //------------metodos--------------------
     
     //agregar nuevo animal
-    public boolean addAnimal(ArrayList<Animal> listado, Animal a){
+    public boolean addAnimal ( Animal a){
         
         if(listado.isEmpty() || !utils.idEnUso(listado, a.getId())){
-            listado.add(a);
+           listado.add(a);
             return true;
         }
                 return false;
     }
     
     //editar info animal
-    public void editarAnimal(ArrayList<Animal> listado, Animal animalNuevo){
+    public void editarAnimal( Animal animalNuevo){
         //obtener posicion animal antiguo
-        int pos = utils.obtenerPosicionPorId(listado, animalNuevo.getId());
+        int pos = utils.obtenerPosicionPorId(listado , animalNuevo.getId());
         
         //modificar informacion antigua
-        listado.set(pos, animalNuevo);
+         listado.set(pos, animalNuevo);
     }
     
     //eliminar animal
-    public boolean eliminarAnimal(ArrayList<Animal> listado, JTable tabla){
+    public boolean eliminarAnimal(JTable tabla){
         int fila = tabla.getSelectedRow();
         if(fila >= 0){
             String id = tabla.getValueAt(fila, 0).toString();
@@ -63,7 +65,7 @@ public class Zoo {
     }
     
     //listar todos animales
-    public void obtenerListadoAnimales(ArrayList<Animal> listado, JTable tabla){
+    public void obtenerListadoAnimales(JTable tabla){
         
         DefaultTableModel modelo = new DefaultTableModel();
         
@@ -93,7 +95,7 @@ public class Zoo {
     
     
     //obtener listado especies Jcvombobox, arrayList, Jtable
-    public void obtenerListaEspecies(JComboBox combo, ArrayList<Animal> listado){
+    public void obtenerListaEspecies(JComboBox combo ){
         ArrayList<String> especies = new ArrayList<>();
         
         if(!listado.isEmpty()){
@@ -111,7 +113,7 @@ public class Zoo {
     
     //metodo obtener listado de especies String [] listaEspecies
     
-    public void listarPorEspecie(ArrayList<Animal> listado, JTable tabla, String especie){
+    public void listarPorEspecie(JTable tabla, String especie){
         DefaultTableModel modelo = new DefaultTableModel();
         
         modelo.addColumn("Id");
@@ -139,4 +141,10 @@ public class Zoo {
         
         tabla.setModel(modelo);
     }
+
+    public ArrayList<Animal> getListado() {
+        return listado;
+    }
+    
+    
 }

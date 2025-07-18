@@ -16,9 +16,10 @@ import javax.swing.JOptionPane;
  * @author Leydi
  */
 public class Form extends javax.swing.JFrame {
-    ArrayList<Animal> listado = null;
-    Zoo zoo = new Zoo();
-    public Form() {
+   // ArrayList<Animal> listado = null;
+    Zoo zoo ;
+    public Form( Zoo zoo ) {
+        this.zoo = zoo;
         initComponents();
         
     }
@@ -231,7 +232,7 @@ public class Form extends javax.swing.JFrame {
                 if(btnGuardar.getText().equals("Guardar")){
                     
                     //insertar animal
-                    boolean res = zoo.addAnimal(listado, a); 
+                    boolean res = zoo.addAnimal(a); 
                     if (res) { 
                          JOptionPane.showMessageDialog(null, "Animal agregado correctamente");
                     }
@@ -249,7 +250,7 @@ public class Form extends javax.swing.JFrame {
                     textHabitat.setText(""); 
                     
                 }else{
-                    zoo.editarAnimal(listado, a);
+                    zoo.editarAnimal(a);
                     this.dispose();
                     
                 }
